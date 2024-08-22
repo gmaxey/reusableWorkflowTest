@@ -3,11 +3,10 @@ kind: workflow
 name: Variable environment
 on:
   workflow_dispatch:
-env:
-  ENV: gpm-qa
+
 jobs:
   build:
-    environment: ${{ env.ENV }}
+    environment: ${{ vars.target_env }}
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
         name: Say hello
