@@ -3,10 +3,12 @@ kind: workflow
 name: Variable environment
 on:
   workflow_dispatch:
-
+    inputs:
+      environment:
+        type: string
 jobs:
   build:
-    environment: ${{ vars.target_env }}
+    environment: ${{ inputs.environment }}
     steps:
       - uses: docker://golang:1.20.3-alpine3.17
         name: Say hello
